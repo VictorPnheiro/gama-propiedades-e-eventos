@@ -1,0 +1,49 @@
+<button (click)="trocarValor()">Trocar valor</button>
+
+<div *ngIf="condicao; else blocoElse"><p>Olá! Estou dentro do ngIf.</p></div>
+<p>Valor de "condicao": {{ condicao }}</p>
+
+<ng-template #blocoElse
+  ><p>VOU EXIBIR QUANDO "CONDICAO" FOR FALSE!</p></ng-template
+>
+
+<div *ngIf="soma(5, 5) >= 10">Exibe baseado na soma.</div>
+
+<div *ngIf="condicao; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock
+  ><h1>Content to render when condition is true.</h1></ng-template
+>
+<ng-template #elseBlock
+  ><h2>Content to render when condition is false.</h2></ng-template
+>
+
+<hr />
+
+<ul>
+  <li *ngFor="let fruta of listaFruta">
+    {{ fruta }}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let carro of carrosLista; index as i; first as f">
+    {{ f }} - {{ i + 1 }} - {{ carro.placa }} - {{ carro.cor }} -
+    {{ carro.ano }}
+  </li>
+</ul>
+
+<hr />
+<h2>Resolução do Exercício</h2>
+
+<ul>
+  <li *ngFor="let memesAgrupados of MEMES_AGRUPADOS_POR_CATEGORIA">
+    <h2>{{ memesAgrupados.categoria }}</h2>
+    <div *ngFor="let meme of memesAgrupados.memes; even as par">
+      <img
+        [src]="PREFIXO_IMAGEM_URL + meme.imagemURL"
+        *ngIf="par; else blocoPar"
+      />
+      <ng-template #blocoPar> <h3>PAR</h3> </ng-template>
+    </div>
+  </li>
+</ul>

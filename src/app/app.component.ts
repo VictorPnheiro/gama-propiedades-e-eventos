@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'gama-propriedades-eventos';
+
+  pudim = 'Pudim'
+  favoriteColor = 'Preto'
+
+  eventoRecebido($event: any){
+    console.log('AppComponente: EVENTO RECEBIDO! ', $event)
+  }
+
+  
 }

@@ -1,0 +1,37 @@
+<p>Valor Atulado de valorContador: {{ valorContador }}</p>
+<h2>Two way data Binding</h2>
+<app-exercicio-contador [(valor)]="valorContador"> </app-exercicio-contador>
+<hr />
+<h2>Exercício contador</h2>
+<app-exercicio-contador
+  [valor]="valorContador"
+  (valorMudou)="onValorAttNoCont($event)"
+></app-exercicio-contador>
+
+<hr />
+
+<h1>Exemplos de Event Binding:</h1>
+
+<button (click)="onClickBotaoEmissor($event)">
+  Emitir informação de click.
+</button>
+<br />
+
+<button (click)="onClick($event)">Clique aqui!</button>
+<input type="text" [value]="valorInput" (keyup)="digitouAlgo($event)" />
+<p>Valor Input: {{ valorInput }}</p>
+
+<hr />
+
+<h1>Exemplos de Porperty Binding:</h1>
+<h2>Palavra: {{ palavra }}</h2>
+<h2>Cor: {{ color }}</h2>
+<input type="text" [value]="initialValue" />
+<br />
+<button [disabled]="isDisabled">Clique em mim</button>
+<br />
+<p [attr.aria-label]="isDisabled ? 'Botão Off' : textoAcessibilidade">
+  Mega Lucario!
+</p>
+<br />
+<img [src]="imageURL" />
