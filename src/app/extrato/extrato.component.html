@@ -1,21 +1,42 @@
 <div class="container text-center p-5">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Data</th>
-        <th>Descrição</th>
-        <th>Valor</th>
-        <th>Categoria</th>
-      </tr>
+  <div class="spinner-grow text-danger" role="status" *ngIf="estaCarregando">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 
-      <tr *ngFor="let transacao of transacoes">
-        <td>{{ transacao.id }}</td>
-        <td>{{ transacao.data | date }}</td>
-        <td>{{ transacao.descricao }}</td>
-        <td>{{ transacao.valor | currency: "BRL" }}</td>
-        <td>{{ transacao.categoria }}</td>
-      </tr>
-    </thead>
-  </table>
+  <div *ngIf="erroNoCarregamento">
+    <h2>Ocorreu um erro! :(</h2>
+    <button
+      (click)="carregarExtrato()"
+      ype="button"
+      class="btn btn-secondary btn-lg"
+    >
+      Tentar novamente
+    </button>
+  </div>
+  <div *ngIf="!estaCarregando && !erroNoCarregamento">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Data</th>
+          <th>Descrição</th>
+          <th>Valor</th>
+          <th>Categoria</th>
+        </tr>
+
+        <tr *ngFor="let transacao of transacoes">
+          <td>{{ transacao.id }}</td>
+          <td>{{ transacao.data | date }}</td>
+          <td>{{ transacao.descricao }}</td>
+          <td>{{ transacao.valor | currency: "BRL" }}</td>
+          <td>{{ transacao.categoria }}</td>
+        </tr>
+      </thead>
+    </table>
+    <button (click)="paginaAnterior()" [disabled]="pagina == 1" class="btn btn-danger">
+      Página Anterior
+    </button>
+    <p>Página atual: {{ pagina }}</p>
+    <button (click)="proximaPagina()" class="btn btn-danger">Próxima Página</button>
+  </div>
 </div>

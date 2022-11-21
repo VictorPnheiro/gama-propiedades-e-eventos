@@ -9,8 +9,10 @@ import { Injectable } from '@angular/core';
 export class ExtratoService {
   API_URL = environment.API_URL;
 
-  getTransacoes() {
-    return this.http.get<Transacao[]>(`${this.API_URL}/transacoes`);
+  getTransacoes(pagina: number) {
+    return this.http.get<Transacao[]>(`${this.API_URL}/transacoes`, {
+      params: { _page: String(pagina) },
+    });
   }
   constructor(private http: HttpClient) {}
 }
