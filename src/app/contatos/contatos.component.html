@@ -17,20 +17,19 @@
     <table class="table">
       <thead>
         <tr>
-          <td>ID</td>
-          <td>Nome</td>
-          <td>CPF</td>
-          <td>Banco</td>
-          <td>Agência</td>
-          <td>Conta</td>
+          <th>Nome</th>
+          <th>Ações</th>
         </tr>
         <tr *ngFor="let contato of contatos">
-          <td>{{ contato.id }}</td>
           <td>{{ contato.nome }}</td>
-          <td>{{ contato.cpf }}</td>
-          <td>{{ contato.banco }}</td>
-          <td>{{ contato.ag }}</td>
-          <td>{{ contato.cc }}</td>
+          <td>
+            <button
+              class="btn btn-primary btn-sm"
+              (click)="verDetalhes(contato.id)"
+            >
+              Ver Detalhes
+            </button>
+          </td>
         </tr>
       </thead>
     </table>

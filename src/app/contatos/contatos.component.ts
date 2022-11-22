@@ -1,7 +1,8 @@
 import { ContatosService } from './contatos.service';
 import { Component, OnInit } from '@angular/core';
-import { Contatos } from './contatos.interfaces';
+import { Contato } from './contatos.interfaces';
 import { take, finalize } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contatos',
@@ -9,14 +10,17 @@ import { take, finalize } from 'rxjs';
   styleUrls: ['./contatos.component.css'],
 })
 export class ContatosComponent implements OnInit {
-  contatos: Array<Contatos> | undefined;
+  contatos: Array<Contato> | undefined;
 
   estaCarregando: boolean | undefined;
   erroNoCarregamento: boolean | undefined;
 
-  constructor(private contatosService: ContatosService) {}
+  constructor(
+    private contatosService: ContatosService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.carregarContatos();
   }
 
@@ -36,7 +40,7 @@ export class ContatosComponent implements OnInit {
       });
   }
 
-  onSucesso(response: Contatos[]) {
+  onSucesso(response: Contato[]) {
     {
       this.contatos = response;
     }
@@ -47,5 +51,9 @@ export class ContatosComponent implements OnInit {
       this.erroNoCarregamento = true;
       console.error(error);
     }
+  }
+
+  verDetalhes(idContato: any) {
+    this.router.navigate([`contatos/${idContato}`]);
   }
 }

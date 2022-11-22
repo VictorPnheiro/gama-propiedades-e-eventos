@@ -1,3 +1,4 @@
+import { DetalhesContatoComponent } from './contatos/detalhes-contato/detalhes-contato.component';
 import { ContatosComponent } from './contatos/contatos.component';
 import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
 import { ExtratoComponent } from './extrato/extrato.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'extrato', component: ExtratoComponent },
   { path: 'contatos', component: ContatosComponent },
+  { path: 'contatos/:id', component: DetalhesContatoComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NaoEncontradoComponent },

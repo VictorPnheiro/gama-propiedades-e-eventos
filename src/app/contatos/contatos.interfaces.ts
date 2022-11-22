@@ -1,4 +1,4 @@
-export interface Contatos {
+export interface Contato {
   id: number;
   nome: string;
   cpf: string;
