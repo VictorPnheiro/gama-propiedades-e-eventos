@@ -1,3 +1,4 @@
+import { ContatosComponent } from './contatos/contatos.component';
 import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
 import { ExtratoComponent } from './extrato/extrato.component';
 import { HomeComponent } from './home/home.component';
@@ -7,9 +8,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'extrato', component: ExtratoComponent },
-  { path: '', redirectTo: 'home', pathMatch:'full' },
+  { path: 'contatos', component: ContatosComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NaoEncontradoComponent },
 ];
 

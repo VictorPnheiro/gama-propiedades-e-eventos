@@ -1,0 +1,38 @@
+<div class="container text-center p-5">
+  <div class="spinner-grow text-danger" role="status" *ngIf="estaCarregando">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+  <div *ngIf="erroNoCarregamento">
+    <h2>Ocorreu um erro! :(</h2>
+    <button
+      (click)="carregarContatos()"
+      ype="button"
+      class="btn btn-secondary btn-lg"
+    >
+      Tentar novamente
+    </button>
+  </div>
+  <div *ngIf="!estaCarregando && !erroNoCarregamento">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Nome</td>
+          <td>CPF</td>
+          <td>Banco</td>
+          <td>Agência</td>
+          <td>Conta</td>
+        </tr>
+        <tr *ngFor="let contato of contatos">
+          <td>{{ contato.id }}</td>
+          <td>{{ contato.nome }}</td>
+          <td>{{ contato.cpf }}</td>
+          <td>{{ contato.banco }}</td>
+          <td>{{ contato.ag }}</td>
+          <td>{{ contato.cc }}</td>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>

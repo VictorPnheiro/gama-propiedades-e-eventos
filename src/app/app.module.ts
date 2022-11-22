@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ExtratoComponent } from './extrato/extrato.component';
 import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
+import { ContatosComponent } from './contatos/contatos.component';
 
 registerLocaleData(localePt, 'pt');
 @NgModule({
@@ -20,6 +21,7 @@ registerLocaleData(localePt, 'pt');
     LoginComponent,
     ExtratoComponent,
     NaoEncontradoComponent,
+    ContatosComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, SharedModule],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
