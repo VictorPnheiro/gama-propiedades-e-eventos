@@ -13,6 +13,7 @@ import { ExtratoComponent } from './extrato/extrato.component';
 import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
 import { ContatosComponent } from './contatos/contatos.component';
 import { DetalhesContatoComponent } from './contatos/detalhes-contato/detalhes-contato.component';
+import { FormsModule } from '@angular/forms';
 
 registerLocaleData(localePt, 'pt');
 @NgModule({
@@ -25,7 +26,13 @@ registerLocaleData(localePt, 'pt');
     ContatosComponent,
     DetalhesContatoComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, SharedModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    SharedModule,
+    FormsModule,
+  ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent],
 })

@@ -17,5 +17,20 @@ export class ContatosService {
     return this.http.get<Contato>(`${this.API_URL}/contatos/${idContato}`);
   }
 
+  criarContato(contato: Contato) {
+    return this.http.post<Contato[]>(`${this.API_URL}/contatos`, contato);
+  }
+
+  attContato(idContato: string, contato: Contato) {
+    return this.http.put<Contato>(
+      `${this.API_URL}/contatos/${idContato}`,
+      contato
+    );
+  }
+
+  apagaContato(idContato: string) {
+    return this.http.delete<Contato[]>(`${this.API_URL}/contatos/${idContato}`);
+  }
+
   constructor(private http: HttpClient) {}
 }
