@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       .logar(this.email, this.senha)
       .pipe(finalize(() => (this.estaLogando = false)))
       .subscribe({
-        next: () => this.loginEfetivado(),
+        next: (response) => this.loginEfetivado(),
         error: () => this.erroLogin(),
       });
   }

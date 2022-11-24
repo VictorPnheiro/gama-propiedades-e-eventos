@@ -1,19 +1,48 @@
 import { Injectable } from '@angular/core';
+import { Usuario } from '../../interfaces/usuario.iterfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  usuario!: Usuario;
+  token!: string;
+
   constructor() {}
 
-  setUsuario(usuario: any) {
+  setUsuario(usuario: Usuario) {
+    this.usuario = usuario;
     localStorage.setItem('usuario', JSON.stringify(usuario));
   }
 
+  setToken(token: string) {
+    this.token = token;
+    localStorage.setItem('token', JSON.stringify(token));
+  }
+
   getUsuario() {
+    if (this.usuario) {
+      return this.usuario;
+    }
+
     const usuarioGuardado = localStorage.getItem('usuario');
     if (usuarioGuardado) {
-      return JSON.parse(usuarioGuardado);
+      this.usuario = JSON.parse(usuarioGuardado);
+      return this.usuario;
+    }
+
+    return null;
+  }
+
+  getToken() {
+    if (this.token) {
+      return this.token;
+    }
+
+    const tokenGuardado = localStorage.getItem('token');
+    if (tokenGuardado) {
+      this.token = tokenGuardado;
+      return this.token;
     }
 
     return null;

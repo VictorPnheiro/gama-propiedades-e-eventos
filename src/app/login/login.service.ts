@@ -1,6 +1,7 @@
 import { AuthService } from './../shared/services/auth/auth.service';
 import { Injectable } from '@angular/core';
-import { delay, mergeMap, of, tap, throwError, timer } from 'rxjs';
+import { delay, mergeMap, of, tap, throwError, timer, Observable } from 'rxjs';
+import { LoginResponse } from './login.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ import { delay, mergeMap, of, tap, throwError, timer } from 'rxjs';
 export class LoginService {
   constructor(private authService: AuthService) {}
 
-  logar(email: string, senha: string) {
+  logar(email: string, senha: string): Observable<LoginResponse> {
     // return this.http.post<Contato[]>(`${this.API_URL}/auth`, contato, this.httOptions);
 
     if (email === 'testeando@teste.com' && senha === '123') {
@@ -23,6 +24,7 @@ export class LoginService {
         delay(2000),
         tap((response) => {
           this.authService.setUsuario(response.usuario);
+          this.authService.setToken(response.tokenAutenticacao);
         })
       );
     }
