@@ -2,29 +2,36 @@
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form-signin pt-5">
     <div class="p-2">
       <input
+        #emailInput
         type="email"
         class="form-control"
         placeholder="Email"
         name="email"
         [(ngModel)]="email"
-        email
         required
+        email
+        [class.is-invalid]="exibeErro('email', form)"
       />
-      <p *ngIf="exibeErro('email', form)">Digite um Email válido!</p>
+      <div *ngIf="exibeErro('email', form)" class="invalid-feedback">
+        Digite um Email válido!
+      </div>
     </div>
 
     <div class="p-2">
       <input
+        #senhaInput
         type="password"
         class="form-control"
         placeholder="Senha"
         name="senha"
         [(ngModel)]="senha"
         required
+        [class.is-invalid]="exibeErro('senha', form) ? 'is-invalid' : ''"
       />
+      <div *ngIf="exibeErro('senha', form)" class="invalid-feedback">
+        Digite uma Senha válida!
+      </div>
     </div>
-
-    <p *ngIf="exibeErro('senha', form)">Digite uma Senha válida!</p>
 
     <div class="p-2">
       <button class="btn btn-lg btn-primary btn-block" type="submit">

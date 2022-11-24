@@ -1,5 +1,5 @@
 import { FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -7,18 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('emailInput') emailInput!: ElementRef;
+  @ViewChild('senhaInput') senhaInput!: ElementRef;
+
   email!: string;
   senha!: string;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   onSubmit(form: any) {
     if (!form.valid) {
       form.controls['email'].markAsTouched();
       form.controls['senha'].markAsTouched();
-      // console.log(form);
+
+      if (form.controls['email'].invalid) {
+        this.emailInput.nativeElement.focus();
+        return;
+      }
+      // if (form.controls['senha'].invalid) {
+      //   this.senhaInput.nativeElement.focus();
+      //   return;
+      // }
+
+      this.senhaInput.nativeElement.focus();
       return;
     }
   }
@@ -32,4 +41,8 @@ export class LoginComponent implements OnInit {
       form.controls[nomeControle].invalid && form.controls[nomeControle].touched
     );
   }
+
+  constructor() {}
+
+  ngOnInit(): void {}
 }
