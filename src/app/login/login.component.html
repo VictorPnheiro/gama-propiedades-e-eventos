@@ -26,17 +26,27 @@
         name="senha"
         [(ngModel)]="senha"
         required
-        [class.is-invalid]="exibeErro('senha', form) ? 'is-invalid' : ''"
+        [class.is-invalid]="exibeErro('senha', form)"
       />
       <div *ngIf="exibeErro('senha', form)" class="invalid-feedback">
         Digite uma Senha válida!
       </div>
     </div>
 
+    <p *ngIf="erroNoLogin" class="erro-login">Usuário ou senha incorreto.</p>
+
     <div class="p-2">
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button
+        class="btn btn-lg btn-primary btn-block"
+        type="submit"
+        [disabled]="estaLogando"
+      >
         Entrar
       </button>
     </div>
   </form>
+
+  <div class="spinner-grow text-danger" role="status" *ngIf="estaLogando">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </div>

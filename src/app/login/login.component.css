@@ -5,6 +5,10 @@
   margin: 0 auto;
 }
 
+.erro-login{
+  color: red;
+}
+
 /* .ng-invalid.ng-touched {
   border-color: red;
 } */

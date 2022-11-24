@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
 import { LoginService } from './login.service';
-import { FormGroup, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +16,14 @@ export class LoginComponent implements OnInit {
   email!: string;
   senha!: string;
 
-  constructor(private loginService: LoginService) {}
+  estaLogando!: boolean;
+  erroNoLogin!: boolean;
+
+  constructor(private loginService: LoginService, private router: Router) {}
 
   onSubmit(form: NgForm) {
+    this.erroNoLogin = false;
+
     if (!form.valid) {
       form.controls['email'].markAsTouched();
       form.controls['senha'].markAsTouched();
@@ -38,11 +45,13 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.estaLogando = true;
     this.loginService
       .logar(this.email, this.senha)
+      .pipe(finalize(() => (this.estaLogando = false)))
       .subscribe({
-        next: (response) => console.log('Logou porra!'),
-        error: (response) => console.log('Fodeu, não logou!'),
+        next: () => this.loginEfetivado(),
+        error: () => this.erroLogin(),
       });
   }
 
@@ -54,6 +63,17 @@ export class LoginComponent implements OnInit {
     return (
       form.controls[nomeControle].invalid && form.controls[nomeControle].touched
     );
+  }
+
+  loginEfetivado() {
+    this.router.navigate(['home']);
+  }
+
+  erroLogin() {
+    {
+      this.erroNoLogin = true;
+      console.log('Deu merda maluco.');
+    }
   }
 
   ngOnInit(): void {}
