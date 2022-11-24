@@ -1,4 +1,5 @@
-import { FormGroup } from '@angular/forms';
+import { LoginService } from './login.service';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -13,7 +14,9 @@ export class LoginComponent implements OnInit {
   email!: string;
   senha!: string;
 
-  onSubmit(form: any) {
+  constructor(private loginService: LoginService) {}
+
+  onSubmit(form: NgForm) {
     if (!form.valid) {
       form.controls['email'].markAsTouched();
       form.controls['senha'].markAsTouched();
@@ -30,9 +33,20 @@ export class LoginComponent implements OnInit {
       this.senhaInput.nativeElement.focus();
       return;
     }
+
+    this.login();
   }
 
-  exibeErro(nomeControle: string, form: any) {
+  login() {
+    this.loginService
+      .logar(this.email, this.senha)
+      .subscribe({
+        next: (response) => console.log('Logou porra!'),
+        error: (response) => console.log('Fodeu, não logou!'),
+      });
+  }
+
+  exibeErro(nomeControle: string, form: NgForm) {
     if (!form.controls[nomeControle]) {
       return false;
     }
@@ -41,8 +55,6 @@ export class LoginComponent implements OnInit {
       form.controls[nomeControle].invalid && form.controls[nomeControle].touched
     );
   }
-
-  constructor() {}
 
   ngOnInit(): void {}
 }
