@@ -7,25 +7,13 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { ExtratoComponent } from './extrato/extrato.component';
 import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
-import { ContatosComponent } from './contatos/contatos.component';
-import { DetalhesContatoComponent } from './contatos/detalhes-contato/detalhes-contato.component';
 import { FormsModule } from '@angular/forms';
 
 registerLocaleData(localePt, 'pt');
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent,
-    ExtratoComponent,
-    NaoEncontradoComponent,
-    ContatosComponent,
-    DetalhesContatoComponent,
-  ],
+  declarations: [AppComponent, LoginComponent, NaoEncontradoComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

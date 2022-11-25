@@ -1,6 +1,6 @@
-import { ContatosService } from './contatos.service';
+import { ContatosService } from './../contatos.service';
 import { Component, OnInit } from '@angular/core';
-import { Contato } from './contatos.interfaces';
+import { Contato } from './../contatos.interfaces';
 import { take, finalize } from 'rxjs';
 import { Router } from '@angular/router';
 
