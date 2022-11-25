@@ -7,27 +7,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
-    canActivate: [EstaLogadoGuard],
-  },
-  {
-    path: 'extrato',
-    loadChildren: () => import('./extrato/extrato.module').then((m) => m.ExtratoModule),
-    canActivate: [EstaLogadoGuard],
-  },
-  {
-    path: 'contatos',
+    path: '',
     loadChildren: () =>
-      import('./contatos/contatos.module').then((m) => m.ContatosModule),
+      import('./area-logada/area-logada.module').then(
+        (m) => m.AreaLogadaModule
+      ),
     canActivate: [EstaLogadoGuard],
   },
   {
     path: 'login',
-    component: LoginComponent,
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginModule),
     canActivate: [NaoEstaLogadoGuard],
   },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NaoEncontradoComponent },
 ];
 

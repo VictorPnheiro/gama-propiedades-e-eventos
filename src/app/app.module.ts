@@ -7,19 +7,16 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './login/login.component';
 import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
-import { FormsModule } from '@angular/forms';
 
 registerLocaleData(localePt, 'pt');
 @NgModule({
-  declarations: [AppComponent, LoginComponent, NaoEncontradoComponent],
+  declarations: [AppComponent, NaoEncontradoComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    FormsModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent],

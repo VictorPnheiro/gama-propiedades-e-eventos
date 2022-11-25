@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -7,8 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Input() title: string | undefined;
-  
-  constructor() {}
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
+
+  logout() {
+    this.authService.logout();
+  }
 }
