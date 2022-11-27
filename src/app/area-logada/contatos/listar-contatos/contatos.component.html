@@ -13,6 +13,11 @@
       Tentar novamente
     </button>
   </div>
+  
+  <div class="d-grid gap-2 col-2 mx-auto ">
+    <button class="btn btn-success btn-sm m-1" (click)="novoContato()">Novo Contato</button>
+  </div>
+
   <div *ngIf="!estaCarregando && !erroNoCarregamento">
     <table class="table">
       <thead>
@@ -24,10 +29,16 @@
           <td>{{ contato.nome }}</td>
           <td>
             <button
-              class="btn btn-primary btn-sm"
+              class="btn btn-primary btn-sm m-1"
               (click)="verDetalhes(contato.id)"
             >
               Ver Detalhes
+            </button>
+            <button
+              class="btn btn-danger btn-sm m-1"
+              (click)="deletarContato(contato.id)"
+            >
+              Deletar
             </button>
           </td>
         </tr>

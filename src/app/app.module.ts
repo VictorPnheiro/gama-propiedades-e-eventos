@@ -9,6 +9,7 @@ import localePt from '@angular/common/locales/pt';
 import { AppRoutingModule } from './app-routing.module';
 import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localePt, 'pt');
 @NgModule({
@@ -19,6 +20,7 @@ registerLocaleData(localePt, 'pt');
     AppRoutingModule,
     SharedModule,
     NgbModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent],

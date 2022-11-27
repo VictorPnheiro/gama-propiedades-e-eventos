@@ -53,7 +53,29 @@ export class ContatosComponent implements OnInit {
     }
   }
 
-  verDetalhes(idContato: any) {
+  verDetalhes(idContato: number) {
     this.router.navigate([`contatos/${idContato}`]);
+  }
+
+  deletarContato(idContato: number) {
+    this.contatosService.apagaContato(idContato).subscribe({
+      next: (response) => this.onSuccessDeleteContato(idContato),
+      error: (erro) => this.onErrorDeleteContato(),
+    });
+  }
+
+  onSuccessDeleteContato(idContato: number) {
+    console.log('funcionou porra');
+    this.contatos = this.contatos?.filter(
+      (contatos) => contatos.id != idContato
+    );
+  }
+
+  onErrorDeleteContato() {
+    console.log('Deu erro menó');
+  }
+
+  novoContato(){
+    this.router.navigate(['contatos/novo'])
   }
 }

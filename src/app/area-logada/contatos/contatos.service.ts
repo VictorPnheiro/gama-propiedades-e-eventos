@@ -14,21 +14,21 @@ export class ContatosService {
   }
 
   getContatoPorId(idContato: any) {
-    return this.http.get<Contato>(`${this.API_URL}/contatos/${idContato}`);
+    return this.http.get<Contato>(`${this.API_URL}/contatos/${Number(idContato)}`);
   }
 
   criarContato(contato: Contato) {
     return this.http.post<Contato[]>(`${this.API_URL}/contatos`, contato);
   }
 
-  attContato(idContato: string, contato: Contato) {
+  attContato(idContato: number, contato: Contato) {
     return this.http.put<Contato>(
       `${this.API_URL}/contatos/${idContato}`,
       contato
     );
   }
 
-  apagaContato(idContato: string) {
+  apagaContato(idContato: number) {
     return this.http.delete<Contato[]>(`${this.API_URL}/contatos/${idContato}`);
   }
 

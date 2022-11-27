@@ -1,0 +1,52 @@
+<!-- Formulario Reativo -->
+
+<div class="container pt-5">
+  <form [formGroup]="contatoForm">
+    <div class="form-group mb-3">
+      <label for="nome">Nome</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nome"
+        placeholder="Nome"
+        formControlName="nome"
+        [class.is-invalid]="exibeErro('nome')"
+      />
+      <div *ngIf="exibeErro('nome')" class="invalid-feedback">
+        Digite seu nome!
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Email"
+        formControlName="email"
+        [class.is-invalid]="exibeErro('email')"
+      />
+      <div *ngIf="exibeErro('email')" class="invalid-feedback">
+        Digite um email válido!
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="banco">Banco</label>
+      <input
+        type="text"
+        class="form-control"
+        id="banco"
+        placeholder="Banco"
+        formControlName="banco"
+        [class.is-invalid]="exibeErro('banco')"
+      />
+      <div *ngIf="exibeErro('banco')" class="invalid-feedback">
+        Digite um banco válido!
+      </div>
+    </div>
+
+    <button class="btn btn-success" (click)="salvaContato()">Salvar</button>
+  </form>
+</div>
