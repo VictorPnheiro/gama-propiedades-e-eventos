@@ -1,0 +1,103 @@
+<!-- Formulario Reativo -->
+
+<div class="container pt-5">
+  <div class="text-center" *ngIf="estaCarregando">
+    <div class="spinner-grow text-danger" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="erroNoCarregamento">
+    <h2>Ocorreu um erro! :(</h2>
+    <button
+      (click)="carregarContato()"
+      type="button"
+      class="btn btn-secondary btn-lg"
+    >
+      Tentar novamente
+    </button>
+  </div>
+
+  <div *ngIf="!estaCarregando && !erroNoCarregamento">
+    <form [formGroup]="contatoForm">
+      <div class="form-group mb-3">
+        <label for="nome">Nome</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nome"
+          placeholder="Nome"
+          formControlName="nome"
+          [class.is-invalid]="exibeErro('nome')"
+        />
+        <div *ngIf="exibeErro('nome')" class="invalid-feedback">
+          Digite seu nome!
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="cpf">CPF</label>
+        <input
+          type="text"
+          class="form-control"
+          id="cpf"
+          placeholder="CPF"
+          formControlName="cpf"
+          [class.is-invalid]="exibeErro('cpf')"
+        />
+        <div *ngIf="exibeErro('cpf')" class="invalid-feedback">
+          Digite um CPF válido!
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="banco">Banco</label>
+        <input
+          type="text"
+          class="form-control"
+          id="banco"
+          placeholder="Banco"
+          formControlName="banco"
+          [class.is-invalid]="exibeErro('banco')"
+        />
+        <div *ngIf="exibeErro('banco')" class="invalid-feedback">
+          Digite um banco válido!
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="ag">Agência</label>
+        <input
+          type="number"
+          class="form-control"
+          id="ag"
+          placeholder="Agência"
+          formControlName="ag"
+          [class.is-invalid]="exibeErro('ag')"
+        />
+        <div *ngIf="exibeErro('ag')" class="invalid-feedback">
+          Digite uma agência válida!
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="cc">Conta</label>
+        <input
+          type="text"
+          class="form-control"
+          id="cc"
+          placeholder="Conta"
+          formControlName="cc"
+          [class.is-invalid]="exibeErro('cc')"
+        />
+        <div *ngIf="exibeErro('cc')" class="invalid-feedback">
+          Digite uma conta válida!
+        </div>
+      </div>
+
+      <button class="btn btn-success" (click)="onSubmit()">
+        {{ estaEditando() ? "Salvar Contato" : "Criar Contato" }}
+      </button>
+    </form>
+  </div>
+</div>

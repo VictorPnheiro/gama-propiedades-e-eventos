@@ -57,6 +57,14 @@ export class ContatosComponent implements OnInit {
     this.router.navigate([`contatos/${idContato}`]);
   }
 
+  editarContato(idContato: number) {
+    this.router.navigate([`contatos/${idContato}/editar`]);
+  }
+
+  novoContato(){
+    this.router.navigate(['contatos/novo'])
+  }
+
   deletarContato(idContato: number) {
     this.contatosService.apagaContato(idContato).subscribe({
       next: (response) => this.onSuccessDeleteContato(idContato),
@@ -65,17 +73,14 @@ export class ContatosComponent implements OnInit {
   }
 
   onSuccessDeleteContato(idContato: number) {
-    console.log('funcionou porra');
+    alert("Contato deletado com sucesso!")
     this.contatos = this.contatos?.filter(
       (contatos) => contatos.id != idContato
     );
   }
 
   onErrorDeleteContato() {
-    console.log('Deu erro menó');
+    alert("Ocorreu um erro ao deletar o contato!")
   }
 
-  novoContato(){
-    this.router.navigate(['contatos/novo'])
-  }
 }

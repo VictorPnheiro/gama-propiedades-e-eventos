@@ -6,13 +6,13 @@ import { ContatosRoutingModule } from './contatos-routing.module';
 
 import { DetalhesContatoComponent } from './detalhes-contato/detalhes-contato.component';
 import { ContatosComponent } from './listar-contatos/contatos.component';
-import { NovoContatoComponent } from './novo-contato/novo-contato.component';
+import { EditarContatoComponent } from './editar-contato/editar-contato.component';
 
 @NgModule({
   declarations: [
     ContatosComponent,
     DetalhesContatoComponent,
-    NovoContatoComponent,
+    EditarContatoComponent,
   ],
   imports: [CommonModule, ContatosRoutingModule, ReactiveFormsModule],
 })

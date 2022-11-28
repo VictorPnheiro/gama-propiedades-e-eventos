@@ -13,9 +13,11 @@
       Tentar novamente
     </button>
   </div>
-  
-  <div class="d-grid gap-2 col-2 mx-auto ">
-    <button class="btn btn-success btn-sm m-1" (click)="novoContato()">Novo Contato</button>
+
+  <div class="d-grid gap-2 col-2 mx-auto">
+    <button class="btn btn-success btn-sm m-1" (click)="novoContato()">
+      Novo Contato
+    </button>
   </div>
 
   <div *ngIf="!estaCarregando && !erroNoCarregamento">
@@ -33,6 +35,12 @@
               (click)="verDetalhes(contato.id)"
             >
               Ver Detalhes
+            </button>
+            <button
+              class="btn btn-warning btn-sm m-1"
+              (click)="editarContato(contato.id)"
+            >
+              Editar Contato
             </button>
             <button
               class="btn btn-danger btn-sm m-1"

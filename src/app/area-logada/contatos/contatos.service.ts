@@ -21,7 +21,7 @@ export class ContatosService {
     return this.http.post<Contato[]>(`${this.API_URL}/contatos`, contato);
   }
 
-  attContato(idContato: number, contato: Contato) {
+  attContato(idContato: any, contato: Contato) {
     return this.http.put<Contato>(
       `${this.API_URL}/contatos/${idContato}`,
       contato
