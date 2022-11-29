@@ -1,7 +1,7 @@
 import { Contato } from './contatos.interfaces';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,9 @@ export class ContatosService {
   }
 
   getContatoPorId(idContato: any) {
-    return this.http.get<Contato>(`${this.API_URL}/contatos/${Number(idContato)}`);
+    return this.http.get<Contato>(
+      `${this.API_URL}/contatos/${Number(idContato)}`
+    );
   }
 
   criarContato(contato: Contato) {

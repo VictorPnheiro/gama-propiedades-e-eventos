@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExercicioContadorComponent } from './components/exercicio-contador/exercicio-contador.component';
@@ -8,6 +9,7 @@ import { ExercicioPipesComponent } from './components/exercicio-pipes/exercicio-
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,13 @@ import { RouterModule } from '@angular/router';
     ExercicioPipesComponent,
     HeaderComponent,
     FooterComponent,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ],
 })
 export class SharedModule {}

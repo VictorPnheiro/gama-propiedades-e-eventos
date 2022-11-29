@@ -7,7 +7,7 @@ import { Usuario } from '../../interfaces/usuario.iterfaces';
 })
 export class AuthService {
   usuario!: Usuario;
-  token!: string;
+  token!: any;
 
   constructor(private router: Router) {}
 

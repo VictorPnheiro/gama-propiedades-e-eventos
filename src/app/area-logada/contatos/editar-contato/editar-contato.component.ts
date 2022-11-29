@@ -92,7 +92,7 @@ export class EditarContatoComponent implements OnInit {
     }
   }
 
-  validateAllFormFields() {
+  validarCamposDoForm() {
     Object.keys(this.contatoForm.controls).forEach((field) => {
       const control = this.contatoForm.get(field);
       control?.markAsTouched();
@@ -101,7 +101,7 @@ export class EditarContatoComponent implements OnInit {
 
   onSubmit() {
     if (this.contatoForm.invalid) {
-      this.validateAllFormFields();
+      this.validarCamposDoForm();
       return;
     }
 
